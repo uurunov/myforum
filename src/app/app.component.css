@@ -1,0 +1,40 @@
+/* Selections by ID */
+div#app-root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+/* Selections by TagName */
+
+app-header {
+  background: rgba(0, 139, 182, 0.4);
+  border-bottom: 3px solid #008bb6;
+  border-top: 3px solid #008bb6;
+  box-shadow: 0px 2px 6px #008bb63d;
+  padding: 0.2rem 0;
+  height: fit-content;
+}
+
+app-main {
+  background: rgba(0, 139, 182, 0.1);
+  margin: 1.406rem 8.75rem;
+  height: 100%;
+}
+
+app-footer {
+  justify-self: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.875rem;
+  height: fit-content;
+  background: rgba(0, 139, 182, 0.05);
+  border-top: 3px solid #008bb6;
+  box-shadow: 0px -2px 6px #008bb63d;
+  color: #000000de;
+  padding: 1rem 8.75rem;
+}

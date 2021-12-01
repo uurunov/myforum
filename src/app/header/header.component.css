@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Comforter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+
+section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 8.75rem;
+}
+
+section h1 {
+  font-size: 3rem;
+  font-family: "Comforter", cursive;
+  text-shadow: 42px -10px 9px #fff;
+  letter-spacing: -0.07px;
+  color: #000000de;
+  padding-top: 0.2rem;
+}
+
+section a {
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #008bb6;
+  font-family: "Roboto", sans-serif;
+}
+
+section div.userAvatar {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+section a,
+section div.userAvatar {
+  display: flex;
+  align-items: center;
+}
+
+section a img.icon {
+  height: 2.5vh;
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+section div.userAvatar img.icon {
+  height: 5vh;
+  width: auto;
+  margin: 0 0.5rem;
+}

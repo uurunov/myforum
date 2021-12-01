@@ -1,0 +1,34 @@
+img.logo {
+  height: 1.5rem;
+  width: auto;
+}
+
+ul.social-media-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0 1rem;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+ul li a,
+div.container {
+  display: flex;
+  align-items: center;
+}
+
+p span {
+  font-weight: 500;
+}
+
+ul li img.logo {
+  transition: height 1s;
+}
+
+ul li img.logo:hover {
+  height: 3rem;
+}
