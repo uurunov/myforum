@@ -6,10 +6,3 @@ app-sign-up {
   align-items: center;
   height: 100%;
 }
-
-app-topic-comments {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}

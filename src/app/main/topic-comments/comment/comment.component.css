@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 
+div.container {
+  display: flex;
+  align-items: flex-end;
+  margin: 0.5rem 0;
+}
+
 div.avatar img.icon {
   height: 5vh;
   width: auto;
@@ -65,7 +71,7 @@ div.options {
   flex-direction: column;
   justify-content: space-evenly;
   width: 6vw;
-  height: 100%;
+  height: 7vh;
   background: #008bb6;
   border-radius: 0.5rem;
   margin-left: 0.2rem;
@@ -81,12 +87,17 @@ div.options input[type="button"] {
   color: #fff;
 }
 
+div.options input[type="button"]:hover {
+  color: #000;
+  text-shadow: 0px 0px 3px #fff;
+}
+
 section.send {
   display: flex;
   align-items: flex-end;
 }
 
-section.send div.container {
+section.send form.container {
   display: flex;
   align-items: center;
   padding: 0.6rem;
@@ -98,7 +109,7 @@ section.send div.container {
   margin: 0 9.25rem 5.8vw 9.25rem;
 }
 
-section.send div.container input.inputBox {
+section.send form.container input.inputBox {
   background: transparent;
   color: #008bb6;
   font-size: 0.8rem;
@@ -109,11 +120,11 @@ section.send div.container input.inputBox {
   outline: none;
 }
 
-section.send div.container input.inputBox::placeholder {
+section.send form.container input.inputBox::placeholder {
   color: #008bb6;
 }
 
-section.send div.container button {
+section.send form.container button {
   height: fit-content;
   width: fit-content;
   background: transparent;
@@ -122,11 +133,11 @@ section.send div.container button {
   align-items: center;
 }
 
-section.send div.container button:hover {
+section.send form.container button:hover {
   cursor: pointer;
 }
 
-section.send div.container button img.icon {
+section.send form.container button img.icon {
   height: 2.5vh;
   width: auto;
 }

@@ -1,43 +1,59 @@
-<div class="avatar">
-  <img src="/assets/avatar.svg" alt="user avatar icon" class="icon" />
-</div>
-<div class="commentBox">
-  <div class="header">
-    <p id="lastname">Jim</p>
-    <div class="withOption">
-      <p id="date">Nov 12 2021, 19:46</p>
-      <button>
-        <img src="/assets/more_vert.svg" alt="more options icon" class="icon" />
-      </button>
+<div class="container" *ngFor="let comment of comments">
+  <div class="avatar">
+    <img src="/assets/avatar.svg" alt="user avatar icon" class="icon" />
+  </div>
+
+  <div class="commentBox">
+    <div class="header" *ngIf="!user_role_admin">
+      <p id="lastname">{{ comment.user.lastname }}</p>
+      <p id="date">{{ comment.comment_date }}</p>
     </div>
-  </div>
-  <!-- <div class="header">
-    <p id="lastname">Jim</p>
-    <p id="date">Nov 12 2021, 19:46</p>
-  </div> -->
-  <div class="comment">
-    Star Wars Mando season 3 will be released early next year
-  </div>
-</div>
 
-<!-- <div class="options">
-  <input type="button" value="Edit" />
-  <input type="button" value="Delete" />
-</div> -->
+    <div class="header" *ngIf="user_role_admin">
+      <p id="lastname">{{ comment.id }} {{ comment.user.lastname }}</p>
+      <div class="withOption">
+        <p id="date">{{ comment.comment_date }}</p>
+        <button type="button" (click)="onOptionsClicked(comment.id)">
+          <img
+            src="/assets/more_vert.svg"
+            alt="more options icon"
+            class="icon"
+          />
+        </button>
+      </div>
+    </div>
 
-<!-- <section class="popup send">
-  <div class="container">
+    <div class="comment">{{ comment.content }}</div>
+  </div>
+
+  <div class="options" *ngIf="comment.active">
     <input
-      type="text"
-      id="feedback"
-      name="feedback"
-      class="inputBox"
-      required
-      minlength="1"
-      placeholder="Write a comment"
+      type="button"
+      value="Edit"
+      (click)="onOptionEditClicked(comment.id)"
     />
-    <button>
-      <img src="/assets/check.svg" alt="save icon" class="icon" />
-    </button>
+    <input type="button" value="Delete" (click)="deleteComment(comment.id)" />
   </div>
-</section> -->
+
+  <section class="popup send" *ngIf="admin_option_edit">
+    <form
+      class="container"
+      #newComment="ngForm"
+      (ngSubmit)="editComment(newComment)"
+    >
+      <input
+        type="text"
+        id="content"
+        name="content"
+        [(ngModel)]="model.content"
+        class="inputBox"
+        required
+        minlength="1"
+        placeholder="Write a comment"
+      />
+      <button type="submit">
+        <img src="/assets/check.svg" alt="save icon" class="icon" />
+      </button>
+    </form>
+  </section>
+</div>

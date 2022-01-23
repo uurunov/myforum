@@ -1,63 +1,98 @@
-<form action="#">
-  <p>Please, complete the form to sign up</p>
+<div class="component">
+  <form
+    autocomplete="off"
+    #signUpData="ngForm"
+    (ngSubmit)="register(signUpData)"
+  >
+    <p>Please, complete the form to sign up</p>
 
-  <div class="container">
-    <img src="/assets/person.svg" alt="last name icon" class="icon" />
-    <input
-      type="text"
-      id="lastname"
-      name="lastname"
-      class="inputBox"
-      required
-      minlength="8"
-      maxlength="30"
-      placeholder="Last name"
-    />
+    <div class="container">
+      <img src="/assets/person.svg" alt="last name icon" class="icon" />
+      <input
+        type="text"
+        id="lastname"
+        name="lastname"
+        class="inputBox"
+        required
+        minlength="8"
+        maxlength="30"
+        placeholder="Last name"
+        [(ngModel)]="model.lastname"
+        #inputLastName
+        (focusin)="getFocusIn(inputLastName)"
+        (focusout)="getFocusOut(inputLastName)"
+      />
+    </div>
+
+    <div class="container">
+      <img src="/assets/person.svg" alt="login icon" class="icon" />
+      <input
+        type="text"
+        id="login"
+        name="login"
+        class="inputBox"
+        required
+        minlength="8"
+        maxlength="30"
+        placeholder="Login"
+        [(ngModel)]="model.login"
+        #inputLogin
+        (focusin)="getFocusIn(inputLogin)"
+        (focusout)="getFocusOut(inputLogin)"
+      />
+    </div>
+
+    <div class="container">
+      <img src="/assets/lock.svg" alt="password icon" class="icon" />
+      <input
+        type="text"
+        id="password"
+        name="password"
+        class="inputBox"
+        required
+        minlength="8"
+        maxlength="30"
+        placeholder="Password"
+        [(ngModel)]="model.password"
+        #inputPass
+        (focusin)="getFocusIn(inputPass)"
+        (focusout)="getFocusOut(inputPass)"
+      />
+    </div>
+
+    <div class="container">
+      <img src="/assets/lock.svg" alt="confirm password icon" class="icon" />
+      <input
+        type="text"
+        id="cnfmpassword"
+        name="cnfmpassword"
+        class="inputBox"
+        required
+        minlength="8"
+        maxlength="30"
+        placeholder="Confirm password"
+        [(ngModel)]="model.cnfmpassword"
+        #inputConfPass
+        (focusin)="getFocusIn(inputConfPass)"
+        (focusout)="getFocusOut(inputConfPass)"
+      />
+    </div>
+
+    <div class="container">
+      <input
+        type="checkbox"
+        name="role"
+        id="role"
+        class="checkbox"
+        [(ngModel)]="model.status"
+      />
+      <label for="role" class="checkboxLabel">Admin</label>
+    </div>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <div class="signup">
+    Already have an account? <a routerLink="/sign-in">Sign in</a>
   </div>
-
-  <div class="container">
-    <img src="/assets/person.svg" alt="login icon" class="icon" />
-    <input
-      type="text"
-      id="login"
-      name="login"
-      class="inputBox"
-      required
-      minlength="8"
-      maxlength="30"
-      placeholder="Login"
-    />
-  </div>
-
-  <div class="container">
-    <img src="/assets/lock.svg" alt="password icon" class="icon" />
-    <input
-      type="text"
-      id="password"
-      name="password"
-      class="inputBox"
-      required
-      minlength="8"
-      maxlength="30"
-      placeholder="Password"
-    />
-  </div>
-
-  <div class="container">
-    <img src="/assets/lock.svg" alt="confirm password icon" class="icon" />
-    <input
-      type="text"
-      id="cnfmpassword"
-      name="cnfmpassword"
-      class="inputBox"
-      required
-      minlength="8"
-      maxlength="30"
-      placeholder="Confirm password"
-    />
-  </div>
-
-  <button type="button">Register</button>
-</form>
-
-<div class="signup">Already have an account? <a href="#">Sign in</a></div>
+</div>

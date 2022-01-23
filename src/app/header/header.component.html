@@ -1,5 +1,5 @@
-<!-- <section>
-  <a href="#"
+<section *ngIf="loggedIn">
+  <a href="#" (click)="backToLogin()"
     ><img
       src="/assets/navigate_before_blue.svg"
       alt="navigate before icon"
@@ -12,10 +12,10 @@
 
   <div class="userAvatar">
     <img src="/assets/avatar.svg" alt="user avatar icon" class="icon" />
-    <p>Last Name</p>
+    <p>{{ currentUserLastname }}</p>
   </div>
-</section> -->
+</section>
 
-<section style="justify-content: center">
+<section *ngIf="!loggedIn" style="justify-content: center">
   <h1>Sean's Forum</h1>
 </section>

@@ -1,5 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 
+div#app-topic-comments {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
 section.header {
   display: flex;
   justify-content: space-between;
@@ -42,12 +49,6 @@ section.header div.topic {
   margin: 0.5rem;
 }
 
-app-comment {
-  display: flex;
-  align-items: flex-end;
-  margin: 0.5rem 0;
-}
-
 section.comments {
   display: flex;
   flex-direction: column;
@@ -64,7 +65,7 @@ section.send {
   box-shadow: 0px -2px 6px #008bb63d;
 }
 
-section.send div.container {
+section.send form.container {
   display: flex;
   align-items: center;
   padding: 0.6rem;
@@ -76,7 +77,7 @@ section.send div.container {
   margin: 0.5rem;
 }
 
-section.send div.container input.inputBox {
+section.send form.container input.inputBox {
   background: transparent;
   color: #008bb6;
   font-size: 0.8rem;
@@ -87,11 +88,11 @@ section.send div.container input.inputBox {
   outline: none;
 }
 
-section.send div.container input.inputBox::placeholder {
+section.send form.container input.inputBox::placeholder {
   color: #008bb6;
 }
 
-section.send div.container button {
+section.send form.container button {
   height: fit-content;
   width: fit-content;
   background: transparent;
@@ -100,11 +101,11 @@ section.send div.container button {
   align-items: center;
 }
 
-section.send div.container button:hover {
+section.send form.container button:hover {
   cursor: pointer;
 }
 
-section.send div.container button img.icon {
+section.send form.container button img.icon {
   height: 2.5vh;
   width: auto;
 }
