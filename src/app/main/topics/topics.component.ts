@@ -67,6 +67,8 @@ export class TopicsComponent implements OnInit {
       if (topic.id === topicId) {
         if (topic.user.id === this.auth.LoggedInUser.id) {
           this.user_author = true;
+        } else {
+          this.user_author = false;
         }
       }
     });

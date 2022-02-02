@@ -78,6 +78,8 @@ export class CommentComponent implements OnInit, OnChanges {
       if (elem.id === commentId) {
         if (elem.user.id === this.auth.LoggedInUser.id) {
           this.user_author = true;
+        } else {
+          this.user_author = false;
         }
       }
     });

@@ -30,10 +30,13 @@
     </a>
 
     <!-- AUTHOR PRIVILIGES: MORE OPTIONS ICON -->
-    <button type="button" (click)="onOptionsClicked(topic.id)">
+    <button
+      *ngIf="isAuthor(topic.id)"
+      type="button"
+      (click)="onOptionsClicked(topic.id)"
+    >
       <img src="/assets/more_vert.svg" alt="more options icon" class="icon" />
     </button>
-    <!-- *ngIf="isAuthor(topic.id)" -->
 
     <!-- AUTHOR PRIVILIGES: MORE OPTIONS ICON: EDIT/DELETE buttons -->
     <div class="options" *ngIf="topic.active">
