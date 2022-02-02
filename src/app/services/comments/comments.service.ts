@@ -13,6 +13,7 @@ export class CommentsService {
 
   constructor(private http: HttpClient) {}
 
+  // send request about storing new comment into the selected topic by ID
   createComment(data: any, topicId: number) {
     return this.http.post(
       this.apiURL + '/topics/' + topicId + '/comments',
@@ -21,6 +22,7 @@ export class CommentsService {
     );
   }
 
+  // get all comments belonging to the selected topic by ID
   getComments(topicId: number) {
     return this.http.get(
       this.apiURL + '/topics/' + topicId + '/comments',
@@ -28,6 +30,7 @@ export class CommentsService {
     );
   }
 
+  // send request about editing a comment by ID
   updateComment(data: any, id: number) {
     return this.http.put(
       this.apiURL + '/comments/' + id,
@@ -36,6 +39,7 @@ export class CommentsService {
     );
   }
 
+  // send request about deleting a comment by ID
   deleteComment(id: number) {
     return this.http.delete(this.apiURL + '/comments/' + id, this.httpOptions);
   }

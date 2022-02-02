@@ -1,20 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth/auth.service';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { TopicsService } from 'src/app/services/topics/topics.service';
 
 @Component({
-  selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css'],
+  selector: 'app-new-topic',
+  templateUrl: './new-topic.component.html',
+  styleUrls: ['./new-topic.component.css'],
 })
-export class SignInComponent implements OnInit {
+export class NewTopicComponent implements OnInit {
   loginFailedMessage: string = '';
-  model: any = {};
+  model: any = { user: { id: this.auth.LoggedInUser.id } };
 
-  constructor(private auth: AuthService) {}
+  constructor(
+    private auth: AuthService,
+    private topicService: TopicsService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
-    localStorage.clear();
-  }
+  ngOnInit(): void {}
 
   getFocusIn(element: any, state: any): void {
     if (!(state.invalid && state.touched)) {
@@ -26,13 +30,14 @@ export class SignInComponent implements OnInit {
     element.parentElement.style.boxShadow = '';
   }
 
-  // Sends user's login data to the server to be authenticated, and saves the token sent by server
-  login(formData: any) {
+  // Adds new topic into the app
+  addTopic(formData: any) {
     if (formData.valid) {
-      this.auth.signin(formData.value).subscribe(
+      console.log(this.model);
+      this.topicService.addNewTopic(this.model).subscribe(
         (response) => {
-          // saves the token
-          this.auth.saveToken(response);
+          console.log(response);
+          this.router.navigate(['/topics']);
         },
         (error) => {
           console.error(error);

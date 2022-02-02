@@ -71,7 +71,7 @@ div.options {
   flex-direction: column;
   justify-content: space-evenly;
   width: 6vw;
-  height: 7vh;
+  height: 6vh;
   background: #008bb6;
   border-radius: 0.5rem;
   margin-left: 0.2rem;
@@ -146,7 +146,7 @@ section.popup {
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: 100%;
 }

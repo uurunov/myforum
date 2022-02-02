@@ -1,0 +1,54 @@
+<div class="component">
+  <!-- Navigation Menus: MENU AND ADD USER BUTTONS -->
+  <section class="header">
+    <a routerLink="/admin-menu">
+      <img
+        src="/assets/navigate_before_white.svg"
+        alt="navigate before icon"
+        class="icon"
+      />
+      <p>Menu</p>
+    </a>
+    <a routerLink="/add-user">
+      <img src="/assets/add_white.svg" alt="add white icon" class="icon" />
+      <p>Add User</p>
+    </a>
+  </section>
+
+  <h2>Users</h2>
+
+  <!-- Table of App Users -->
+  <table class="border" *ngIf="users.length">
+    <thead>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Middle Name</th>
+      <th>Last Name</th>
+      <th>Login</th>
+      <th>Email</th>
+      <th>Access</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.fname }}</td>
+        <td>{{ user.mname }}</td>
+        <td>{{ user.lname }}</td>
+        <td>{{ user.login }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <input
+            type="checkbox"
+            name="user_access"
+            id="user_access"
+            [(ngModel)]="user.user_access"
+            (change)="changeUserAccess(user.id)"
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p *ngFor="let user of users" style="text-align: center">
+    {{ user.id }} : {{ user.user_access }}
+  </p>
+</div>

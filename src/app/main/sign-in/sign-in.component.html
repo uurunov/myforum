@@ -1,12 +1,11 @@
 <div class="component">
-  <form
-    autocomplete="off"
-    #signInData="ngForm"
-    (ngSubmit)="login(signInData, inputPass)"
-  >
-    <p>Please, enter your login and password to sign in</p>
-
-    <div class="container">
+  <p>Please, enter your login and password to sign in</p>
+  <form autocomplete="off" #signInData="ngForm" (ngSubmit)="login(signInData)">
+    <!-- Login -->
+    <div
+      class="container"
+      [class.leftEmpty]="inptLogin.invalid && inptLogin.touched"
+    >
       <img src="/assets/person.svg" alt="login icon" class="icon" />
       <input
         type="text"
@@ -14,37 +13,52 @@
         name="login"
         class="inputBox"
         required
-        minlength="8"
-        maxlength="30"
+        minlength="3"
         placeholder="Login"
         [(ngModel)]="model.login"
         #inputLogin
-        (focusin)="getFocusIn(inputLogin)"
+        #inptLogin="ngModel"
+        (focusin)="getFocusIn(inputLogin, inptLogin)"
         (focusout)="getFocusOut(inputLogin)"
       />
     </div>
 
-    <div class="container">
+    <!-- Password -->
+    <div
+      class="container"
+      [class.leftEmpty]="inptPass.invalid && inptPass.touched"
+    >
       <img src="/assets/lock.svg" alt="password icon" class="icon" />
       <input
-        type="text"
-        id="password"
-        name="password"
+        type="password"
+        id="pswd"
+        name="pswd"
         class="inputBox"
         required
         minlength="8"
-        maxlength="30"
         placeholder="Password"
-        [(ngModel)]="model.password"
+        [(ngModel)]="model.pswd"
         #inputPass
-        (focusin)="getFocusIn(inputPass)"
+        pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+        #inptPass="ngModel"
+        (focusin)="getFocusIn(inputPass, inptPass)"
         (focusout)="getFocusOut(inputPass)"
       />
     </div>
 
+    <p
+      *ngIf="!signInData.valid"
+      class="error-message"
+      style="text-align: center"
+    >
+      {{ loginFailedMessage }}
+    </p>
+
+    <!-- SUBMIT -->
     <button type="submit">Sign in</button>
   </form>
 
+  <!-- No account? -->
   <div class="signup">
     Don't have an account? <a routerLink="/sign-up">Register</a>
   </div>

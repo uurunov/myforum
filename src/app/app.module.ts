@@ -1,10 +1,12 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 import { DatePipe } from '@angular/common';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -18,6 +20,11 @@ import { CommentComponent } from './main/topic-comments/comment/comment.componen
 import { NotFoundComponent } from './not-found/not-found.component';
 
 import { routes } from './routes';
+import { AdminMenuComponent } from './main/admin-menu/admin-menu.component';
+import { UserCheckComponent } from './user-check/user-check.component';
+import { NewTopicComponent } from './main/new-topic/new-topic.component';
+import { UsersComponent } from './main/users/users.component';
+import { NewUserComponent } from './main/new-user/new-user.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +38,11 @@ import { routes } from './routes';
     TopicCommentsComponent,
     CommentComponent,
     NotFoundComponent,
+    AdminMenuComponent,
+    UserCheckComponent,
+    NewTopicComponent,
+    UsersComponent,
+    NewUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,8 +57,11 @@ import { routes } from './routes';
         disallowedRoutes: [],
       },
     }),
+    BrowserAnimationsModule,
+    NgxSpinnerModule,
     RouterModule.forRoot(routes),
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [DatePipe],
   bootstrap: [AppComponent],
 })

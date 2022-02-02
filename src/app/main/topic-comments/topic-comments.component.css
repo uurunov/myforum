@@ -18,8 +18,8 @@ section.header {
 section.header a {
   display: flex;
   align-items: center;
-  width: 6.15vw;
-  height: 5vh;
+  width: 7vw;
+  height: 4vh;
   background: #008bb6;
   color: #fff;
   font-family: "Roboto", sans-serif;

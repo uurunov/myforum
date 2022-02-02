@@ -1,15 +1,20 @@
 <div class="component">
-  <p>Please, complete the form to sign up</p>
-  <form
-    autocomplete="off"
-    #signUpData="ngForm"
-    (ngSubmit)="register(signUpData)"
-  >
+  <!-- Navigation Menu: USERS BUTTON -->
+  <section class="header">
+    <a routerLink="/users">
+      <img
+        src="/assets/navigate_before_white.svg"
+        alt="navigate before icon"
+        class="icon"
+      />
+      <p>Users</p>
+    </a>
+  </section>
+
+  <!-- Form for adding new user by admin -->
+  <form autocomplete="off" #newUser="ngForm" (ngSubmit)="addUser(newUser)">
     <!-- Firstname -->
-    <div
-      class="container"
-      [class.leftEmpty]="firstName.invalid && firstName.touched"
-    >
+    <div class="container" [class.leftEmpty]="fName.invalid && fName.touched">
       <img src="/assets/person.svg" alt="first name icon" class="icon" />
       <input
         type="text"
@@ -20,18 +25,15 @@
         minlength="3"
         placeholder="First name"
         [(ngModel)]="model.fname"
-        #inputFirstName
-        #firstName="ngModel"
-        (focusin)="getFocusIn(inputFirstName, firstName)"
-        (focusout)="getFocusOut(inputFirstName)"
+        #inputFName
+        #fName="ngModel"
+        (focusin)="getFocusIn(inputFName, fName)"
+        (focusout)="getFocusOut(inputFName)"
       />
     </div>
 
     <!-- Middlename -->
-    <div
-      class="container"
-      [class.leftEmpty]="middleName.invalid && middleName.touched"
-    >
+    <div class="container" [class.leftEmpty]="mName.invalid && mName.touched">
       <img src="/assets/person.svg" alt="middle name icon" class="icon" />
       <input
         type="text"
@@ -42,18 +44,15 @@
         minlength="3"
         placeholder="Middle name"
         [(ngModel)]="model.mname"
-        #inputMiddleName
-        #middleName="ngModel"
-        (focusin)="getFocusIn(inputMiddleName, middleName)"
-        (focusout)="getFocusOut(inputMiddleName)"
+        #inputMName
+        #mName="ngModel"
+        (focusin)="getFocusIn(inputMName, mName)"
+        (focusout)="getFocusOut(inputMName)"
       />
     </div>
 
     <!-- Lastname -->
-    <div
-      class="container"
-      [class.leftEmpty]="lastName.invalid && lastName.touched"
-    >
+    <div class="container" [class.leftEmpty]="lName.invalid && lName.touched">
       <img src="/assets/person.svg" alt="last name icon" class="icon" />
       <input
         type="text"
@@ -64,10 +63,10 @@
         minlength="3"
         placeholder="Last name"
         [(ngModel)]="model.lname"
-        #inputLastName
-        #lastName="ngModel"
-        (focusin)="getFocusIn(inputLastName, lastName)"
-        (focusout)="getFocusOut(inputLastName)"
+        #inputLName
+        #lName="ngModel"
+        (focusin)="getFocusIn(inputLName, lName)"
+        (focusout)="getFocusOut(inputLName)"
       />
     </div>
 
@@ -84,8 +83,8 @@
         placeholder="Email"
         [(ngModel)]="model.email"
         #inputEmail
-        #email="ngModel"
         email
+        #email="ngModel"
         (focusin)="getFocusIn(inputEmail, email)"
         (focusout)="getFocusOut(inputEmail)"
       />
@@ -122,15 +121,15 @@
         minlength="8"
         placeholder="Password"
         [(ngModel)]="model.pswd"
-        #inputPass
+        #inputPswd
         #pass="ngModel"
         pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
-        (focusin)="getFocusIn(inputPass, pass)"
-        (focusout)="getFocusOut(inputPass)"
+        (focusin)="getFocusIn(inputPswd, pass)"
+        (focusout)="getFocusOut(inputPswd)"
       />
     </div>
 
-    <!-- Confirm Password -->
+    <!-- Confirm password -->
     <div
       class="container"
       [class.leftEmpty]="confPass.invalid && confPass.touched"
@@ -152,20 +151,23 @@
       />
     </div>
 
-    <p
-      *ngIf="!signUpData.valid"
-      class="error-message"
-      style="text-align: center"
-    >
+    <!-- ADMIN OR NOT -->
+    <div class="container">
+      <input
+        type="checkbox"
+        name="user_role"
+        id="user_role"
+        class="checkbox"
+        [(ngModel)]="model.user_role"
+      />
+      <label for="user_role" class="checkboxLabel">Admin</label>
+    </div>
+
+    <p *ngIf="!newUser.valid" class="error-message" style="text-align: center">
       {{ signUpFailedMessage }}
     </p>
 
     <!-- SUBMIT -->
-    <button type="submit">Register</button>
+    <button type="submit">Add User</button>
   </form>
-
-  <!-- Have an account? -->
-  <div class="signup">
-    Already have an account? <a routerLink="/sign-in">Sign in</a>
-  </div>
 </div>

@@ -1,4 +1,5 @@
 <div id="app-topic-comments">
+  <!-- Navigation: BACK TO TOPICS page & Topic Title -->
   <section class="header">
     <a routerLink="/topics">
       <img
@@ -11,10 +12,12 @@
     <div class="topic">{{ currentTopic.title }}</div>
   </section>
 
+  <!-- All comments related to the topic-->
   <section class="comments">
-    <app-comment></app-comment>
+    <app-comment [timeToRecall]="timeToRecallComments"></app-comment>
   </section>
 
+  <!-- Compose new comment in the form -->
   <section class="send">
     <form
       class="container"

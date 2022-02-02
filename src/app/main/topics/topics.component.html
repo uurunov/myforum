@@ -1,16 +1,86 @@
-<h2>Hot Topics of The Week</h2>
-
-<section class="topics">
-  <a
-    [routerLink]="['/topics', topic.id]"
-    class="topic"
-    *ngFor="let topic of topics"
-  >
+<!-- Navigation Menus: MENU AND ADD TOPIC BUTTONS -->
+<section class="header">
+  <a routerLink="/admin-menu">
     <img
-      src="/assets/navigate_next.svg"
-      alt="navigate next icon"
+      src="/assets/navigate_before_white.svg"
+      alt="navigate before icon"
       class="icon"
     />
-    <p>{{ topic.title }}</p>
+    <p>Menu</p>
   </a>
+  <a routerLink="/add-topic">
+    <img src="/assets/add_white.svg" alt="add white icon" class="icon" />
+    <p>Add Topic</p>
+  </a>
+</section>
+
+<h2>Hot Topics of The Week</h2>
+
+<!-- Collection of Topics with TITLE -->
+<section class="topics">
+  <div class="topicBox" *ngFor="let topic of topics">
+    <!-- TOPIC BOX -->
+    <a [routerLink]="['/topics', topic.id]" class="topic">
+      <img
+        src="/assets/navigate_next.svg"
+        alt="navigate next icon"
+        class="icon"
+      />
+      <p>{{ topic.title }}</p>
+    </a>
+
+    <!-- AUTHOR PRIVILIGES: MORE OPTIONS ICON -->
+    <button type="button" (click)="onOptionsClicked(topic.id)">
+      <img src="/assets/more_vert.svg" alt="more options icon" class="icon" />
+    </button>
+    <!-- *ngIf="isAuthor(topic.id)" -->
+
+    <!-- AUTHOR PRIVILIGES: MORE OPTIONS ICON: EDIT/DELETE buttons -->
+    <div class="options" *ngIf="topic.active">
+      <input
+        type="button"
+        value="Edit"
+        (click)="onOptionEditClicked(topic.id)"
+      />
+      <input type="button" value="Delete" (click)="deleteTopic(topic.id)" />
+    </div>
+
+    <!-- AUTHOR PRIVILIGES: MORE OPTIONS ICON: EDIT BUTTON CLICKED (SCRIM) -->
+    <section class="popup" *ngIf="author_option_edit">
+      <form #newTopicTitle="ngForm" (ngSubmit)="editTopic(newTopicTitle)">
+        <!-- Title -->
+        <div
+          class="container"
+          [class.leftEmpty]="edited.invalid && edited.touched"
+        >
+          <input
+            type="text"
+            id="title"
+            name="title"
+            class="inputBox"
+            required
+            minlength="4"
+            placeholder="Enter new topic title"
+            [(ngModel)]="model.title"
+            #topicTitle
+            #edited="ngModel"
+            (focusin)="getFocusIn(topicTitle, edited)"
+            (focusout)="getFocusOut(topicTitle)"
+          />
+        </div>
+
+        <p
+          *ngIf="!newTopicTitle.valid"
+          class="error-message"
+          style="text-align: center"
+        >
+          {{ loginFailedMessage }}
+        </p>
+
+        <!-- CANCEL / SUBMIT -->
+        <button type="submit">Save</button>
+        <button (click)="stopEditing(newTopicTitle)">Cancel</button>
+      </form>
+    </section>
+  </div>
 </section>

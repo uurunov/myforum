@@ -17,11 +17,17 @@ form {
   justify-content: center;
 }
 
-form p {
+div.component p {
   font-size: 0.8rem;
   font-family: "Roboto", sans-serif;
-  margin-bottom: 0.8rem;
+  margin-top: 1rem;
   font-weight: 600;
+}
+
+div.component p.error-message {
+  margin-bottom: 0.5rem;
+  color: rgb(182, 0, 0);
+  font-size: 0.7rem;
 }
 
 form div.container {
@@ -89,4 +95,8 @@ div.signup a {
   text-decoration: none;
   color: #008bb6;
   margin: 0 0.4rem;
+}
+
+div.leftEmpty {
+  box-shadow: 0 0 10px rgb(182, 0, 0);
 }

@@ -1,0 +1,86 @@
+div.component {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+table.border th:first-child,
+table.border th:last-child {
+  min-width: 5vw;
+}
+
+table.border th:nth-child(2),
+table.border th:nth-child(3),
+table.border th:nth-child(4) {
+  min-width: 10vw;
+}
+
+table.border th:nth-child(5) {
+  min-width: 12vw;
+}
+
+table.border th:nth-child(6) {
+  min-width: 16vw;
+}
+
+table.border {
+  background-color: #fff;
+  align-self: center;
+}
+
+table.border thead {
+  height: 6vh;
+  color: #000;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.8rem;
+}
+
+table.border tbody {
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+}
+
+table.border tbody tr {
+  height: 5vh;
+}
+
+section.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+section.header a {
+  display: flex;
+  align-items: center;
+  min-width: 7vw;
+  height: 4vh;
+  background: #008bb6;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.8rem;
+  transition: box-shadow 0.5s;
+  text-decoration: none;
+  margin: 0.5rem;
+}
+
+section.header a:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 10px rgb(0, 139, 182);
+}
+
+section.header a img.icon {
+  height: 2.5vh;
+  min-width: auto;
+  margin: 0 0.5rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 0.02rem;
+  color: #000000de;
+  text-align: center;
+  font-weight: normal;
+  margin: 0 0 2rem 0;
+}

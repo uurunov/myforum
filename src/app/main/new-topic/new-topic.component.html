@@ -1,0 +1,41 @@
+<div class="component">
+  <!-- Navigation Menu: TOPICS BUTTON -->
+  <section class="header">
+    <a routerLink="/topics">
+      <img
+        src="/assets/navigate_before_white.svg"
+        alt="navigate before icon"
+        class="icon"
+      />
+      <p>Topics</p>
+    </a>
+  </section>
+
+  <!-- Form for adding new topic -->
+  <form autocomplete="off" #newTopic="ngForm" (ngSubmit)="addTopic(newTopic)">
+    <!-- Title -->
+    <div class="container" [class.leftEmpty]="topic.invalid && topic.touched">
+      <input
+        type="text"
+        id="title"
+        name="title"
+        class="inputBox"
+        required
+        minlength="4"
+        placeholder="Enter new topic name"
+        [(ngModel)]="model.title"
+        #inputTopic
+        #topic="ngModel"
+        (focusin)="getFocusIn(inputTopic, topic)"
+        (focusout)="getFocusOut(inputTopic)"
+      />
+    </div>
+
+    <p *ngIf="!newTopic.valid" class="error-message" style="text-align: center">
+      {{ loginFailedMessage }}
+    </p>
+
+    <!-- SUBMIT -->
+    <button type="submit">Add</button>
+  </form>
+</div>

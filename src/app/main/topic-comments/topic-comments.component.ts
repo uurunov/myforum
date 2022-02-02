@@ -12,8 +12,12 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./topic-comments.component.css'],
 })
 export class TopicCommentsComponent implements OnInit {
-  currentTopic: Topic = { id: 0, title: '' };
+  // Information about the selected topic
+  currentTopic: Topic = { id: 0, title: '', user: { id: 0 }, active: false };
+
   model: any = {};
+
+  timeToRecallComments: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,25 +27,31 @@ export class TopicCommentsComponent implements OnInit {
     private auth: AuthService
   ) {}
 
+  // Get selected topic information by getting topic by id from server, and store the info into currentTopic object
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.topicsService.getTopic(params.get('id')).subscribe((topic: any) => {
-        this.currentTopic = topic;
+        this.currentTopic = JSON.parse(JSON.stringify(topic));
       });
     });
   }
 
+  // Register new comment into the server
   sendComment(comment: any) {
-    let nowDate = new Date();
-    this.model.topicId = this.currentTopic.id;
-    this.model.userId = this.auth.LoggedInUser.id;
-    this.model.comment_date = this.date.transform(nowDate, 'MMM d y, H:mm');
-    console.log(this.model);
-    this.commentService
-      .createComment(JSON.stringify(this.model), this.currentTopic.id)
-      .subscribe((data) => {
-        console.log(data);
-      });
+    if (comment.valid) {
+      let nowDate = new Date();
+      this.model.topicId = this.currentTopic.id;
+      this.model.userId = this.auth.LoggedInUser.id;
+      this.model.comment_date = this.date.transform(nowDate, 'MMM d y, H:mm');
+
+      // sending new comment to the server
+      this.commentService
+        .createComment(JSON.stringify(this.model), this.currentTopic.id)
+        .subscribe((data) => {
+          console.log(data);
+          this.timeToRecallComments = true;
+        });
+    }
     comment.reset();
   }
 }

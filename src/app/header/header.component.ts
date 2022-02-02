@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   ngDoCheck(): void {
     if (this.auth.isSignedIn()) {
       this.loggedIn = true;
-      this.currentUserLastname = this.auth.LoggedInUser.lastname;
+      this.currentUserLastname = this.auth.LoggedInUser.lname;
     } else {
       this.loggedIn = false;
     }

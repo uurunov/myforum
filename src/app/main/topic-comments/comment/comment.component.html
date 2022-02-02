@@ -1,18 +1,24 @@
 <div class="container" *ngFor="let comment of comments">
+  <!-- User profile photo -->
   <div class="avatar">
     <img src="/assets/avatar.svg" alt="user avatar icon" class="icon" />
   </div>
 
+  <!-- User Comment -->
   <div class="commentBox">
-    <div class="header" *ngIf="!user_role_admin">
-      <p id="lastname">{{ comment.user.lastname }}</p>
+    <!-- User / Comment Info IF NOT AUTHOR -->
+    <div class="header" *ngIf="!isAuthor(comment.id)">
+      <p id="lastname">{{ comment.user.fname }} {{ comment.user.lname }}</p>
       <p id="date">{{ comment.comment_date }}</p>
     </div>
 
-    <div class="header" *ngIf="user_role_admin">
-      <p id="lastname">{{ comment.id }} {{ comment.user.lastname }}</p>
+    <!-- User / Comment Info IF AUTHOR -->
+    <div class="header" *ngIf="isAuthor(comment.id)">
+      <p id="lastname">{{ comment.user.fname }} {{ comment.user.lname }}</p>
       <div class="withOption">
         <p id="date">{{ comment.comment_date }}</p>
+
+        <!-- AUTHOR PRIVILIGES: MORE OPTIONS ICON -->
         <button type="button" (click)="onOptionsClicked(comment.id)">
           <img
             src="/assets/more_vert.svg"
@@ -23,9 +29,11 @@
       </div>
     </div>
 
+    <!-- Comment Text -->
     <div class="comment">{{ comment.content }}</div>
   </div>
 
+  <!-- AUTHOR PRIVILIGES: MORE OPTIONS ICON: EDIT/DELETE buttons -->
   <div class="options" *ngIf="comment.active">
     <input
       type="button"
@@ -35,7 +43,8 @@
     <input type="button" value="Delete" (click)="deleteComment(comment.id)" />
   </div>
 
-  <section class="popup send" *ngIf="admin_option_edit">
+  <!-- AUTHOR PRIVILIGES: MORE OPTIONS ICON: EDIT BUTTON CLICKED (SCRIM) -->
+  <section class="popup send" *ngIf="author_option_edit">
     <form
       class="container"
       #newComment="ngForm"
