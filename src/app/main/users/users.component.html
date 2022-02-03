@@ -48,7 +48,7 @@
       </tr>
     </tbody>
   </table>
-  <p *ngFor="let user of users" style="text-align: center">
-    {{ user.id }} : {{ user.user_access }}
+  <p *ngIf="notification" class="ntfMessage">
+    {{ ntfMessage }}
   </p>
 </div>

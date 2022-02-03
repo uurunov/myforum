@@ -8,6 +8,8 @@ import { User } from '../../models/user';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
+  notification: boolean = false;
+  ntfMessage: string = '';
   users: User[] = [];
 
   model: any = { user_access: 0 };
@@ -36,6 +38,19 @@ export class UsersComponent implements OnInit {
         this.auth.updateUserAccess(this.model, user.id).subscribe(() => {
           this.getAllUsers();
         });
+        this.notification = true;
+        if (user.user_access) {
+          this.ntfMessage = `Access granted to ${
+            user.fname + ' ' + user.lname
+          } (ID: ${user.id})`;
+        } else {
+          this.ntfMessage = `Access blocked to ${
+            user.fname + ' ' + user.lname
+          } (ID: ${user.id})`;
+        }
+        setTimeout(() => {
+          this.notification = false;
+        }, 3000);
       }
     });
   }

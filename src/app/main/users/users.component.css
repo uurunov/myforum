@@ -84,3 +84,12 @@ h2 {
   font-weight: normal;
   margin: 0 0 2rem 0;
 }
+
+p.ntfMessage {
+  text-align: center;
+  font-size: 0.8rem;
+  font-family: "Roboto", sans-serif;
+  margin-top: 1rem;
+  font-weight: 600;
+  word-spacing: 0.1rem;
+}
